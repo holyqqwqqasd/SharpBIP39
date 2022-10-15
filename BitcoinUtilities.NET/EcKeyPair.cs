@@ -70,7 +70,7 @@ namespace Bitcoin.BitcoinUtilities
             // The public key is an encoded point on the elliptic curve. It has no meaning independent of the curve.
 
             _pub = pPublicKeyFromPrivate(_priv, _isCompressedPub);
-            
+
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Bitcoin.BitcoinUtilities
             }
 
             //below is for compressed public key
-            int Y = _ecParams.G.Multiply(privKey).Y.ToBigInteger().IntValue;
+            int Y = _ecParams.G.Multiply(privKey).YCoord.ToBigInteger().IntValue;
 
             byte b;
 
@@ -123,7 +123,7 @@ namespace Bitcoin.BitcoinUtilities
             byte[] pub = _ecParams.G.Multiply(privKey).GetEncoded().Take(33).ToArray();
             pub[0]=b;
             return pub;
-        }       
+        }
 
         /// <summary>
         /// Gets the raw public key value. This appears in transaction scriptSigs. Note that this is <b>not</b> the same
@@ -149,7 +149,7 @@ namespace Bitcoin.BitcoinUtilities
                 return _isCompressedPub;
             }
         }
-        
+
         public override string ToString()
         {
             var b = new StringBuilder();
@@ -230,6 +230,6 @@ namespace Bitcoin.BitcoinUtilities
             Array.Copy(privArray, privStart, bytes, 32 - privLength, privLength);
 
             return bytes;
-        }        
+        }
     }
 }

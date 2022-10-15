@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 
 using Org.BouncyCastle.Math.Raw;
 
 namespace Org.BouncyCastle.Math.EC.Rfc7748
 {
-    [CLSCompliant(false)]
+    
     public static class X448Field
     {
         public const int Size = 16;

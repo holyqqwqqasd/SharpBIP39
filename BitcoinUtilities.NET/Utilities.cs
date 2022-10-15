@@ -22,9 +22,9 @@ namespace Bitcoin.BitcoinUtilities
     /// Made by thashiznets@yahoo.com.au
     /// v1.0.0.2
     /// Bitcoin:1ETQjMkR1NNh4jwLuN5LxY7bMsHC9PUPSV
-    /// </summary>  
+    /// </summary>
     public static class Utilities
-    {        
+    {
         /// <summary>
         /// Calculates RIPEMD160(SHA256(input)). This is used in Address calculations.
         /// </summary>
@@ -205,7 +205,7 @@ namespace Bitcoin.BitcoinUtilities
             byte[] guidBytes = Guid.NewGuid().ToByteArray();
 
             //this combined with DateTime.Now is the default seed in BouncyCastles SecureRandom
-            byte[] threadedSeedBytes = new ThreadedSeedGenerator().GenerateSeed(24, true);
+            byte[] threadedSeedBytes = new SecureRandom().GenerateSeed(24);
 
             byte[] output = new byte[size];
 
@@ -273,7 +273,7 @@ namespace Bitcoin.BitcoinUtilities
                     toHashForSeed = BitConverter.GetBytes(((processorCount - seedByteTakeDetermine.Next(0, processorCount)) + System.Environment.TickCount) + currentThreadId);
                 }
             }
-                
+
             toHashForSeed = Sha512Digest(toHashForSeed, 0, toHashForSeed.Length);
             toHashForSeed = MergeByteArrays(toHashForSeed, guidBytes);
             toHashForSeed = MergeByteArrays(toHashForSeed, BitConverter.GetBytes(currentThreadId));
@@ -288,11 +288,11 @@ namespace Bitcoin.BitcoinUtilities
             toHashForSeed = Sha512Digest(HmacSha512Digest(toHashForSeed,0,seedByteTakeDetermine.Next(24, 64),guidBytes),0,64);
 
             seedByteTakeDetermine.SetSeed(currentThreadId + (DateTime.Now.Ticks - System.Environment.TickCount));
-            
+
             //by making the iterations also random we are again making it hard to determin our seed by brute force
             int iterations = seedStretchingIterations - (seedByteTakeDetermine.Next(0, (seedStretchingIterations / seedByteTakeDetermine.Next(9, 100))));
 
-            //here we use key stretching techniques to make it harder to replay the random seed values by forcing computational time up            
+            //here we use key stretching techniques to make it harder to replay the random seed values by forcing computational time up
             byte[] seedMaterial = Rfc2898_pbkdf2_hmacsha512.PBKDF2(toHashForSeed, seedByteTakeDetermine.GenerateSeed(64), iterations);
 
             //build a SecureRandom object that uses Sha512 to provide randomness and we will give it our created above hardened seed
@@ -301,17 +301,17 @@ namespace Bitcoin.BitcoinUtilities
             //set the seed that we created just above
             secRand.SetSeed(seedMaterial);
 
-            //generate more seed materisal            
+            //generate more seed materisal
             secRand.SetSeed(currentThreadId);
             secRand.SetSeed(MergeByteArrays(guidBytes, threadedSeedBytes));
             secRand.SetSeed(secRand.GenerateSeed(1 + secRand.Next(64)));
-            
+
             //add our prefab seed again onto the previous material just to be sure the above statements are adding and not clobbering seed material
             secRand.SetSeed(seedMaterial);
 
             //here we derive our random bytes
             secRand.NextBytes(output, 0, size);
-                    
+
             return output;
         }
 
@@ -324,7 +324,7 @@ namespace Bitcoin.BitcoinUtilities
         public async static Task<byte[]> GetRandomBytesAsync(int size, int seedStretchingIterations = 5000)
         {
             return await Task.Run<byte[]>(()=> GetRandomBytes(size, seedStretchingIterations));
-        }   
+        }
 
         /// <summary>
         /// Merges two byte arrays
@@ -396,7 +396,7 @@ namespace Bitcoin.BitcoinUtilities
 		{
 			return (ulong)(time.ToUniversalTime() - Globals.UnixEpoch).TotalSeconds;
 		}
-		
+
 		/// <summary>
 		/// Checks to see if supplied time is within the 70 minute tollerance for network error
 		/// </summary>
@@ -431,7 +431,7 @@ namespace Bitcoin.BitcoinUtilities
             int bufferSize = NormalizeString(Globals.NORM_FORM.NormalizationKD, toNormalise, -1, null, 0);
 
             StringBuilder buffer = new StringBuilder(bufferSize);
-            
+
             // Normalize.
             NormalizeString(Globals.NORM_FORM.NormalizationKD, toNormalise, -1, buffer, buffer.Capacity);
 

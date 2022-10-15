@@ -170,7 +170,7 @@ namespace Org.BouncyCastle.Utilities
             return HaveSameContents(a, b);
         }
 
-        [CLSCompliant(false)]
+        
         public static bool AreEqual(uint[] a, uint[] b)
         {
             if (a == b)
@@ -193,7 +193,7 @@ namespace Org.BouncyCastle.Utilities
             return HaveSameContents(a, b);
         }
 
-        [CLSCompliant(false)]
+        
         public static bool AreEqual(ulong[] a, ulong[] b)
         {
             if (a == b)
@@ -382,7 +382,7 @@ namespace Org.BouncyCastle.Utilities
             return hc;
         }
 
-        [CLSCompliant(false)]
+        
         public static int GetHashCode(ushort[] data)
         {
             if (data == null)
@@ -417,7 +417,7 @@ namespace Org.BouncyCastle.Utilities
             return hc;
         }
 
-        [CLSCompliant(false)]
+        
         public static int GetHashCode(uint[] data)
         {
             if (data == null)
@@ -435,7 +435,7 @@ namespace Org.BouncyCastle.Utilities
             return hc;
         }
 
-        [CLSCompliant(false)]
+        
         public static int GetHashCode(uint[] data, int off, int len)
         {
             if (data == null)
@@ -453,7 +453,7 @@ namespace Org.BouncyCastle.Utilities
             return hc;
         }
 
-        [CLSCompliant(false)]
+        
         public static int GetHashCode(ulong[] data)
         {
             if (data == null)
@@ -474,7 +474,7 @@ namespace Org.BouncyCastle.Utilities
             return hc;
         }
 
-        [CLSCompliant(false)]
+        
         public static int GetHashCode(ulong[] data, int off, int len)
         {
             if (data == null)
@@ -510,7 +510,7 @@ namespace Org.BouncyCastle.Utilities
             return data == null ? null : (short[])data.Clone();
         }
 
-        [CLSCompliant(false)]
+        
         public static ushort[] Clone(ushort[] data)
         {
             return data == null ? null : (ushort[])data.Clone();
@@ -521,7 +521,7 @@ namespace Org.BouncyCastle.Utilities
             return data == null ? null : (int[])data.Clone();
         }
 
-        [CLSCompliant(false)]
+        
         public static uint[] Clone(uint[] data)
         {
             return data == null ? null : (uint[])data.Clone();
@@ -532,7 +532,7 @@ namespace Org.BouncyCastle.Utilities
             return data == null ? null : (long[])data.Clone();
         }
 
-        [CLSCompliant(false)]
+        
         public static ulong[] Clone(ulong[] data)
         {
             return data == null ? null : (ulong[])data.Clone();
@@ -548,7 +548,7 @@ namespace Org.BouncyCastle.Utilities
             return existing;
         }
 
-        [CLSCompliant(false)]
+        
         public static ulong[] Clone(ulong[] data, ulong[] existing)
         {
             if (data == null)
@@ -600,7 +600,7 @@ namespace Org.BouncyCastle.Utilities
             }
         }
 
-        [CLSCompliant(false)]
+        
         public static void Fill(
             ulong[]	buf,
             ulong	b)
@@ -659,7 +659,7 @@ namespace Org.BouncyCastle.Utilities
             return tmp;
         }
 
-        [CLSCompliant(false)]
+        
         public static uint[] CopyOf(uint[] data, int newLength)
         {
             uint[] tmp = new uint[newLength];
@@ -781,7 +781,7 @@ namespace Org.BouncyCastle.Utilities
             return rv;
         }
 
-        [CLSCompliant(false)]
+        
         public static ushort[] Concatenate(ushort[] a, ushort[] b)
         {
             if (a == null)
@@ -837,7 +837,7 @@ namespace Org.BouncyCastle.Utilities
             return rv;
         }
 
-        [CLSCompliant(false)]
+        
         public static uint[] Concatenate(uint[] a, uint[] b)
         {
             if (a == null)

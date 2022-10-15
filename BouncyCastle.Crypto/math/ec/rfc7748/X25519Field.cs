@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 
 using Org.BouncyCastle.Math.Raw;
@@ -168,7 +168,7 @@ namespace Org.BouncyCastle.Math.EC.Rfc7748
             }
         }
 
-        [CLSCompliant(false)]
+        
         public static void Decode(uint[] x, int xOff, int[] z)
         {
             Decode128(x, xOff, z, 0);
@@ -177,7 +177,7 @@ namespace Org.BouncyCastle.Math.EC.Rfc7748
         }
 
 #if NETCOREAPP2_1_OR_GREATER || NETSTANDARD2_1_OR_GREATER
-        [CLSCompliant(false)]
+        
         public static void Decode(ReadOnlySpan<uint> x, Span<int> z)
         {
             Decode128(x, z);
@@ -276,7 +276,7 @@ namespace Org.BouncyCastle.Math.EC.Rfc7748
         }
 #endif
 
-        [CLSCompliant(false)]
+        
         public static void Encode(int[] x, uint[] z, int zOff)
         {
             Encode128(x, 0, z, zOff);
@@ -284,7 +284,7 @@ namespace Org.BouncyCastle.Math.EC.Rfc7748
         }
 
 #if NETCOREAPP2_1_OR_GREATER || NETSTANDARD2_1_OR_GREATER
-        [CLSCompliant(false)]
+        
         public static void Encode(ReadOnlySpan<int> x, Span<uint> z)
         {
             Encode128(x, z);
