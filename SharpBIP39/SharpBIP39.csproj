@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BIP39.NET\BIP39.NET.csproj" />
+    <ProjectReference Include="..\BIPS.NET\BIPS.NET.csproj" />
   </ItemGroup>
 
 </Project>
