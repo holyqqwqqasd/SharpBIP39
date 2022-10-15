@@ -5,10 +5,13 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <WarningLevel>1</WarningLevel>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BIPS.NET\BIPS.NET.csproj" />
+    <!-- <PackageReference Include="Nethereum.Portable" Version="4.0.5" /> -->
+    <!-- <PackageReference Include="Nethereum.Accounts" Version="4.9.0" /> -->
   </ItemGroup>
 
 </Project>

@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DefineConstants>NO_BC;NOCUSTOMSSLVALIDATION;NO_NATIVERIPEMD160;NETCORE;HAS_SPAN</DefineConstants>
+    <WarningLevel>1</WarningLevel>
   </PropertyGroup>
 
   <ItemGroup>
